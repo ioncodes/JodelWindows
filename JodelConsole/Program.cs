@@ -16,9 +16,9 @@ namespace JodelConsole
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.Unicode;
-            API.accessToken = "9e98f945-e9b6-44a7-bcab-c831c190c35c";
-            API.latitude = "47.4813857209582";
-            API.longitude = "8.300478143758946";
+            API.accessToken = "API KEY";
+            API.latitude = "LAT";
+            API.longitude = "LNG";
             jodels = API.GetAllJodels();
 
             DisplayJodelsNext();
