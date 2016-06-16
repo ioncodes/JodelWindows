@@ -11,7 +11,7 @@ credits: show my credits
 exit: close app
 
 ## IMPORTANT
-Change accessToken to your API key (get it via mitmproxy; Tut coming soon)!
-Change Longitude!
-Change Latitude!
+- Change accessToken to your API key (get it via mitmproxy; Tut coming soon)!
+- Change Longitude!
+- Change Latitude!
 I'M WORKING ON AUTOMIZING THIS STEPS!!!
