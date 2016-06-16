@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jodel", "Jodel\Jodel.csproj", "{A269C9AF-E56A-4511-855B-A4737E63A46A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JodelAPI", "..\..\JodelAPI\JodelAPI\JodelAPI\JodelAPI.csproj", "{2FE543A6-F341-49D3-9CFD-98559341C69C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JodelConsole", "..\JodelConsole\JodelConsole.csproj", "{36FB4944-D156-4362-95AD-4F961F5E65A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A269C9AF-E56A-4511-855B-A4737E63A46A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A269C9AF-E56A-4511-855B-A4737E63A46A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A269C9AF-E56A-4511-855B-A4737E63A46A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A269C9AF-E56A-4511-855B-A4737E63A46A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FE543A6-F341-49D3-9CFD-98559341C69C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FE543A6-F341-49D3-9CFD-98559341C69C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FE543A6-F341-49D3-9CFD-98559341C69C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FE543A6-F341-49D3-9CFD-98559341C69C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36FB4944-D156-4362-95AD-4F961F5E65A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36FB4944-D156-4362-95AD-4F961F5E65A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36FB4944-D156-4362-95AD-4F961F5E65A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36FB4944-D156-4362-95AD-4F961F5E65A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
