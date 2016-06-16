@@ -97,6 +97,17 @@ namespace JodelConsole
             {
                 Console.WriteLine("Hi my name is ion. My GitHub: ioncodes");
             }
+            else if(input == "help" || input == "?")
+            {
+                Console.WriteLine("Commands:");
+                Console.WriteLine("help - This help message");
+                Console.WriteLine("next - Show next 10 Jodels");
+                Console.WriteLine("back - Show last 10 Jodels");
+                Console.WriteLine("upvote [POSTNUMBER] - Upvotes the post");
+                Console.WriteLine("downvote [POSTNUMBER] - Downvotes the post");
+                Console.WriteLine("exit - Close this tool");
+                Console.WriteLine("credits - Show credits of the developer");
+            }
             goto again;
         }
     }
