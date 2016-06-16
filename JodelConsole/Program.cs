@@ -76,6 +76,10 @@ namespace JodelConsole
             {
                 API.Upvote(Convert.ToInt32(input.Split(' ')[1]));
             }
+            else if(input.Split(' ')[0] == "downvote")
+            {
+                API.Downvote(Convert.ToInt32(input.Split(' ')[1]));
+            }
             else if (input == "next")
             {
                 DisplayJodelsNext();
