@@ -15,17 +15,16 @@ namespace JodelConsole
 
         static void Main(string[] args)
         {
+            Console.Title = "Jodel Viewer for Windows - Console Version";
             Console.OutputEncoding = Encoding.Unicode;
-            API.accessToken = "API KEY";
-            API.latitude = "LAT";
-            API.longitude = "LNG";
+            API.accessToken = "9e98f945-e9b6-44a7-bcab-c831c190c35c";
+            API.latitude = "47.48138427471329";
+            API.longitude = "8.30048079354216";
             jodels = API.GetAllJodels();
 
             DisplayJodelsNext();
 
             InputToAction();
-
-            Console.Read();
         }
 
         static void DisplayJodelsNext()
@@ -87,6 +86,16 @@ namespace JodelConsole
             else if(input == "back")
             {
                 DisplayJodelsBack();
+            }
+            else if(input == "exit")
+            {
+                Console.WriteLine("Bye!");
+                System.Threading.Thread.Sleep(500);
+                Environment.Exit(0);
+            }
+            else if(input == "credits")
+            {
+                Console.WriteLine("Hi my name is ion. My GitHub: ioncodes");
             }
             goto again;
         }
