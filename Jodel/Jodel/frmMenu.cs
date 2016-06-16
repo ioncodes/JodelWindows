@@ -27,23 +27,7 @@ namespace Jodel
             Random rand = new Random();
 
             Point location = new Point(0, 0);
-            //int repetition = 0;
-            //foreach(var item in temp)
-            //{
-            //    Label dynamicbutton = new Label();
-            //    dynamicbutton.Text = item.Item2;
-            //    dynamicbutton.Visible = true;
-            //    dynamicbutton.Location = new Point(4 + repetition * 307, 4);
-            //    dynamicbutton.Height = 50;
-            //    dynamicbutton.Width = flowLayoutPanel1.Width-20;
-            //    dynamicbutton.BackColor = Color.FromArgb(40, 40, 40);
-            //    dynamicbutton.ForeColor = Color.White;
-            //    dynamicbutton.Font = new Font("Lucida Console", 12);
-            //    dynamicbutton.Show();
-            //    flowLayoutPanel1.Controls.Add(dynamicbutton);
-            //    repetition++;
-            //}
-
+            
             foreach(var item in temp)
             {
                 Panel pan = new Panel();
