@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using JodelAPI;
 
 namespace JodelConsole
 {
     class Program
     { 
-        static List<Tuple<string, string>> jodels = new List<Tuple<string, string>>();
+        static List<Tuple<string, string, string, bool>> jodels = new List<Tuple<string, string, string, bool>>();
         static int jodelCounter = 0;
         static string delimiter = "===========================================";
 
@@ -17,7 +18,7 @@ namespace JodelConsole
         {
             Console.Title = "Jodel Viewer for Windows - Console Version";
             Console.OutputEncoding = Encoding.Unicode;
-            API.accessToken = "9e98f945-e9b6-44a7-bcab-c831c190c35c";
+            API.accessToken = "b645c657-f04d-429a-9184-323c536f2eca";
             API.latitude = "47.48138427471329";
             API.longitude = "8.30048079354216";
             jodels = API.GetAllJodels();
@@ -34,7 +35,14 @@ namespace JodelConsole
                 if (jodelCounter < 149)
                 {
                     Console.WriteLine(jodelCounter.ToString() + " =>");
-                    Console.WriteLine(API.FilterItem(jodels, jodelCounter, true));
+                    if(jodels[jodelCounter].Item4)
+                    {
+                        Console.WriteLine("THIS IS AN IMAGE!!");
+                    }
+                    else
+                    {
+                        Console.WriteLine(API.FilterItem(jodels, jodelCounter, true));
+                    }
                     Console.WriteLine(delimiter);
                     jodelCounter++;
                 }
@@ -55,7 +63,14 @@ namespace JodelConsole
                 {
                     jodelCounter--;
                     Console.WriteLine(jodelCounter.ToString() + " =>");
-                    Console.WriteLine(API.FilterItem(jodels, jodelCounter, true));
+                    if (jodels[jodelCounter].Item4)
+                    {
+                        Console.WriteLine("THIS IS AN IMAGE!!");
+                    }
+                    else
+                    {
+                        Console.WriteLine(API.FilterItem(jodels, jodelCounter, true));
+                    }
                     Console.WriteLine(delimiter);
                 }
                 else
@@ -78,6 +93,10 @@ namespace JodelConsole
             else if(input.Split(' ')[0] == "downvote")
             {
                 API.Downvote(Convert.ToInt32(input.Split(' ')[1]));
+            }
+            else if (input.Split(' ')[0] == "image")
+            {
+                Process.Start(API.FilterItem(jodels, Convert.ToInt32(input.Split(' ')[1]), true));
             }
             else if (input == "next")
             {
@@ -105,10 +124,11 @@ namespace JodelConsole
                 Console.WriteLine("back - Show last 10 Jodels");
                 Console.WriteLine("upvote [POSTNUMBER] - Upvotes the post");
                 Console.WriteLine("downvote [POSTNUMBER] - Downvotes the post");
+                Console.WriteLine("image [POSTNUMBER] - Opens the image in browser");
                 Console.WriteLine("exit - Close this tool");
                 Console.WriteLine("credits - Show credits of the developer");
             }
-            goto again;
+            goto again; // bad, i know; will be changed later
         }
     }
 }
