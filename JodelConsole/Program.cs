@@ -18,9 +18,9 @@ namespace JodelConsole
         {
             Console.Title = "Jodel Viewer for Windows - Console Version";
             Console.OutputEncoding = Encoding.Unicode;
-            API.accessToken = "b645c657-f04d-429a-9184-323c536f2eca";
-            API.latitude = "47.48138427471329";
-            API.longitude = "8.30048079354216";
+            API.accessToken = "";
+            API.latitude = "";
+            API.longitude = "";
             jodels = API.GetAllJodels();
 
             DisplayJodelsNext();
