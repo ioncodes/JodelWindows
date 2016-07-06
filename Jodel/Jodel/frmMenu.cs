@@ -18,9 +18,9 @@ namespace Jodel
         public frmMenu()
         {
             InitializeComponent();
-            API.accessToken = "b645c657-f04d-429a-9184-323c536f2eca";
-            API.latitude = "47.48138427471329";
-            API.longitude = "8.30048079354216";
+            API.accessToken = "";
+            API.latitude = "";
+            API.longitude = "";
             temp = API.GetAllJodels();
 
             Point location = new Point(0, 0);
