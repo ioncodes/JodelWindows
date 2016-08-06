@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cmsJodelRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.infosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.commentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsJodelRightClick.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -37,19 +42,41 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(437, 582);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(477, 582);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // cmsJodelRightClick
+            // 
+            this.cmsJodelRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.infosToolStripMenuItem,
+            this.commentsToolStripMenuItem});
+            this.cmsJodelRightClick.Name = "cmsJodelRightClick";
+            this.cmsJodelRightClick.Size = new System.Drawing.Size(134, 48);
+            // 
+            // infosToolStripMenuItem
+            // 
+            this.infosToolStripMenuItem.Name = "infosToolStripMenuItem";
+            this.infosToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.infosToolStripMenuItem.Text = "Infos";
+            this.infosToolStripMenuItem.Click += new System.EventHandler(this.infosToolStripMenuItem_Click);
+            // 
+            // commentsToolStripMenuItem
+            // 
+            this.commentsToolStripMenuItem.Name = "commentsToolStripMenuItem";
+            this.commentsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.commentsToolStripMenuItem.Text = "Comments";
             // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 606);
+            this.ClientSize = new System.Drawing.Size(501, 606);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "frmMenu";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.frmMenu_Load);
+            this.cmsJodelRightClick.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -57,6 +84,9 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ContextMenuStrip cmsJodelRightClick;
+        private System.Windows.Forms.ToolStripMenuItem infosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem commentsToolStripMenuItem;
     }
 }
 

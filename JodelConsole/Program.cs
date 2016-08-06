@@ -9,23 +9,23 @@ using JodelAPI;
 namespace JodelConsole
 {
     class Program
-    { 
-        static List<Tuple<string, string, string, bool>> jodels = new List<Tuple<string, string, string, bool>>();
-        static List<Tuple<string, string, string, int>> comments = new List<Tuple<string, string, string, int>>(); //only for 1 jodel
-        static int jodelCounter = 0;
+    {
+        private static List<Jodels> _jodels;
+        private static List<Comments> _comments;
+        static int _jodelCounter = 0;
         static string delimiter = "===========================================";
 
         static void Main(string[] args)
         {
             Console.Title = "Jodel Viewer for Windows - Console Version";
             Console.OutputEncoding = Encoding.Unicode;
-            API.accessToken = "d87efc34-22d2-4a2f-9a6c-ac086b10f308";
-            API.latitude = "47.48138427471329";
-            API.longitude = "8.30048079354216";
-            API.countryCode = "CH";
-            API.city = "Miami";
+            API.AccessToken = "f863e61d-3548-4d6d-bba7-15253bdc23f6";
+            API.City = "Faggot";
+            API.CountryCode = "FA";
+            API.GoogleApiToken = "";
+            API.SetCurrentLocation(API.GetLocation("Berlin, Deutschland"));
 
-            jodels = API.GetAllJodels();
+            _jodels = API.GetAllJodels();
 
             DisplayJodelsNext();
 
@@ -36,19 +36,14 @@ namespace JodelConsole
         {
             for (int i = 0; i < 10; i++)
             {
-                if (jodelCounter < 149)
+                if (_jodelCounter < 149)
                 {
-                    Console.WriteLine(jodelCounter.ToString() + " =>");
-                    if(jodels[jodelCounter].Item4)
-                    {
-                        Console.WriteLine("THIS IS AN IMAGE!!");
-                    }
-                    else
-                    {
-                        Console.WriteLine(API.FilterItem(jodels, jodelCounter, true));
-                    }
+                    Console.WriteLine(_jodelCounter + " =>");
+                    Console.WriteLine(_jodels[_jodelCounter].IsImage
+                        ? "THIS IS AN IMAGE!!"
+                        : _jodels[_jodelCounter].Message);
                     Console.WriteLine(delimiter);
-                    jodelCounter++;
+                    _jodelCounter++;
                 }
                 else
                 {
@@ -60,21 +55,16 @@ namespace JodelConsole
 
         static void DisplayJodelsBack()
         {
-            jodelCounter -= 10;
+            _jodelCounter -= 10;
             for (int i = 0; i < 10; i++)
             {
-                if (jodelCounter >= 0)
+                if (_jodelCounter >= 0)
                 {
-                    jodelCounter--;
-                    Console.WriteLine(jodelCounter.ToString() + " =>");
-                    if (jodels[jodelCounter].Item4)
-                    {
-                        Console.WriteLine("THIS IS AN IMAGE!!");
-                    }
-                    else
-                    {
-                        Console.WriteLine(API.FilterItem(jodels, jodelCounter, true));
-                    }
+                    _jodelCounter--;
+                    Console.WriteLine(_jodelCounter + " =>");
+                    Console.WriteLine(_jodels[_jodelCounter].IsImage
+                        ? "THIS IS AN IMAGE!!"
+                        : _jodels[_jodelCounter].Message);
                     Console.WriteLine(delimiter);
                 }
                 else
@@ -85,37 +75,37 @@ namespace JodelConsole
             }
         }
 
-        static void InputToAction()
+        private static void InputToAction()
         {
             again:
             string input = Console.ReadLine();
 
             if (input.Split(' ')[0] == "upvote")
             {
-                API.Upvote(Convert.ToInt32(input.Split(' ')[1]));
+                API.Upvote(_jodels[Convert.ToInt32(input.Split(' ')[1])].PostId);
             }
             else if (input.Split(' ')[0] == "downvote")
             {
-                API.Downvote(Convert.ToInt32(input.Split(' ')[1]));
+                API.Downvote(_jodels[Convert.ToInt32(input.Split(' ')[1])].PostId);
             }
             else if (input.Split(' ')[0] == "image")
             {
-                Process.Start(API.FilterItem(jodels, Convert.ToInt32(input.Split(' ')[1]), true));
+                Process.Start(_jodels[Convert.ToInt32(input.Split(' ')[1])].Message);
             }
             else if (input.Split(' ')[0] == "comments")
             {
-                comments = API.GetComments(API.FilterItem(jodels, Convert.ToInt32(input.Split(' ')[1]), false));
-                foreach(var c in comments)
+                _comments = API.GetComments(_jodels[Convert.ToInt32(input.Split(' ')[1])].PostId);
+                foreach(var c in _comments)
                 {
                     Console.WriteLine(delimiter);
-                    Console.WriteLine("Text: "+ c.Item2);
-                    Console.WriteLine("Votes: " + c.Item4);
+                    Console.WriteLine("Text: "+ c.Message);
+                    Console.WriteLine("Votes: " + c.VoteCount);
                     Console.WriteLine(delimiter);
                 }
             }
             else if (input.StartsWith("post"))
             {
-                int index = input.IndexOf("post");
+                int index = input.IndexOf("post", StringComparison.Ordinal);
                 string message = (index < 0)
                     ? input
                     : input.Remove(index, "post".Length);
