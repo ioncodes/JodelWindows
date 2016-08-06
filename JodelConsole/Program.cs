@@ -19,11 +19,11 @@ namespace JodelConsole
         {
             Console.Title = "Jodel Viewer for Windows - Console Version";
             Console.OutputEncoding = Encoding.Unicode;
-            API.AccessToken = "f863e61d-3548-4d6d-bba7-15253bdc23f6";
-            API.City = "Faggot";
-            API.CountryCode = "FA";
-            API.GoogleApiToken = "";
-            API.SetCurrentLocation(API.GetLocation("Berlin, Deutschland"));
+            API.accessToken = "d87efc34-22d2-4a2f-9a6c-ac086b10f308";
+            API.latitude = "47.48138427471329";
+            API.longitude = "8.30048079354216";
+            API.countryCode = "CH";
+            API.city = "Miami";
 
             _jodels = API.GetAllJodels();
 
