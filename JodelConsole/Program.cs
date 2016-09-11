@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using JodelAPI;
+using JodelAPI.Objects;
 
 namespace JodelConsole
 {
@@ -17,15 +18,15 @@ namespace JodelConsole
 
         static void Main(string[] args)
         {
-            Console.Title = "Jodel Viewer for Windows - Console Version";
+            Console.Title = "Jodel Viewer for Windows - Console Version - Updated for my first Star :)";
             Console.OutputEncoding = Encoding.Unicode;
-            API.accessToken = "d87efc34-22d2-4a2f-9a6c-ac086b10f308";
-            API.latitude = "47.48138427471329";
-            API.longitude = "8.30048079354216";
-            API.countryCode = "CH";
-            API.city = "Miami";
+            Account.AccessToken = "";
+            Account.Latitude = "";
+            Account.Longitude = "";
+            Account.CountryCode = "";
+            Account.City = "";
 
-            _jodels = API.GetAllJodels();
+            _jodels = Jodel.GetAllJodels();
 
             DisplayJodelsNext();
 
@@ -82,11 +83,11 @@ namespace JodelConsole
 
             if (input.Split(' ')[0] == "upvote")
             {
-                API.Upvote(_jodels[Convert.ToInt32(input.Split(' ')[1])].PostId);
+                Jodel.Upvote(_jodels[Convert.ToInt32(input.Split(' ')[1])].PostId);
             }
             else if (input.Split(' ')[0] == "downvote")
             {
-                API.Downvote(_jodels[Convert.ToInt32(input.Split(' ')[1])].PostId);
+                Jodel.Downvote(_jodels[Convert.ToInt32(input.Split(' ')[1])].PostId);
             }
             else if (input.Split(' ')[0] == "image")
             {
@@ -94,7 +95,7 @@ namespace JodelConsole
             }
             else if (input.Split(' ')[0] == "comments")
             {
-                _comments = API.GetComments(_jodels[Convert.ToInt32(input.Split(' ')[1])].PostId);
+                _comments = Jodel.GetComments(_jodels[Convert.ToInt32(input.Split(' ')[1])].PostId);
                 foreach(var c in _comments)
                 {
                     Console.WriteLine(delimiter);
@@ -110,7 +111,7 @@ namespace JodelConsole
                     ? input
                     : input.Remove(index, "post".Length);
 
-                API.PostJodel(message);
+                Jodel.PostJodel(message);
             }
             else if (input == "next")
             {
